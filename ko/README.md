@@ -1,7 +1,7 @@
 # 📚 백엔드 취준생을 위한 Claude Code 학습 가이드
 
 > Spring Boot로 백엔드 개발자를 준비하는 **입문자**를 위한 한국어 학습 자료입니다.
-> 원문 [Claude How To](../README.md)를 바탕으로, **그림으로 이해하고 → 퀴즈로 확인하고 → 실습으로 손에 익히는** 순서로 다시 구성했습니다.
+> 원문 [Claude How To](../README.en.md)를 바탕으로, **그림으로 이해하고 → 퀴즈로 확인하고 → 실습으로 손에 익히는** 순서로 다시 구성했습니다.
 
 ![Claude Code 기능 지도](images/00-feature-map.svg)
 

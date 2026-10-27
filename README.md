@@ -3,895 +3,294 @@
   <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
 </picture>
 
-<p align="center">
-  <a href="https://github.com/trending">
-    <img src="https://img.shields.io/badge/GitHub-🔥%20%231%20Trending-purple?style=for-the-badge&logo=github"/>
-  </a>
-</p>
-
-[![GitHub Stars](https://img.shields.io/github/stars/luongnv89/claude-howto?style=flat&color=gold)](https://github.com/luongnv89/claude-howto/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/luongnv89/claude-howto?style=flat)](https://github.com/luongnv89/claude-howto/network/members)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-2.1.302-brightgreen)](CHANGELOG.md)
-[![Claude Code](https://img.shields.io/badge/Claude_Code-2.1+-purple)](https://code.claude.com)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-2.1.302-purple)](https://code.claude.com)
+[![Spring Boot](https://img.shields.io/badge/practice-Spring_Boot_4-6DB33F)](ko/practice/board-api/README.md)
 
-🌐 **Language / Ngôn ngữ / 语言 / Мова:** [English](README.md) | [Tiếng Việt](vi/README.md) | [中文](zh/README.md) | [Українська](uk/README.md) | [日本語](ja/README.md) | [한국어](ko/README.md)
+🌐 **언어:** [한국어](README.md) | [English](README.en.md) | [Tiếng Việt](vi/README.md) | [中文](zh/README.md) | [Українська](uk/README.md) | [日本語](ja/README.md)
 
-# Master Claude Code in a Weekend
+# Claude Code 한국어 학습 가이드
 
-Go from typing `claude` to orchestrating agents, hooks, skills, and MCP servers — with visual tutorials, copy-paste templates, and a guided learning path.
+> **Spring Boot로 백엔드 취업을 준비하는 입문자를 위한 Claude Code 실습서**
+>
+> 그림으로 개념을 잡고, 실제 Spring Boot 프로젝트에서 실습하고, 퀴즈로 확인합니다.
+> 끝까지 따라 하면 **처음 보는 코드를 파악하고, 안전하게 고치고, 반복 작업을 자동화하고, 이슈·PR·CI 흐름에 맞춰 일하는 법**을 익힐 수 있어요.
 
-**[Get Started in 15 Minutes](#get-started-in-15-minutes)** | **[Find Your Level](#not-sure-where-to-start)** | **[Browse the Feature Catalog](CATALOG.md)**
+**[👉 바로 시작하기](#-시작하기)** · **[🧭 학습 순서](#-학습-순서)** · **[📖 공부하는 방법](#-공부하는-방법)** · **[❔ 자주 묻는 질문](#-자주-묻는-질문)**
 
----
-
-## Table of Contents
-
-- [The Problem](#the-problem)
-- [How Claude How To Fixes This](#how-claude-how-to-fixes-this)
-- [How It Works](#how-it-works)
-- [Not Sure Where to Start?](#not-sure-where-to-start)
-- [Get Started in 15 Minutes](#get-started-in-15-minutes)
-- [What Can You Build With This?](#what-can-you-build-with-this)
-- [FAQ](#faq)
-- [Contributing](#contributing)
-- [License](#license)
+![Claude Code 기능 지도](ko/images/00-feature-map.svg)
 
 ---
 
-## The Problem
+## 📌 이 저장소는
 
-You installed Claude Code. You ran a few prompts. Now what?
+[luongnv89/claude-howto](https://github.com/luongnv89/claude-howto) (Claude Code 학습 자료, MIT 라이선스)를 바탕으로, **한국어 학습 가이드(`ko/`)** 를 더한 저장소예요.
 
-- **The official docs describe features — but don't show you how to combine them.** You know slash commands exist, but not how to chain them with hooks, memory, and subagents into a workflow that actually saves hours.
-- **There's no clear learning path.** Should you learn MCP before hooks? Skills before subagents? You end up skimming everything and mastering nothing.
-- **Examples are too basic.** A "hello world" slash command doesn't help you build a production code review pipeline that uses memory, delegates to specialized agents, and runs security scans automatically.
-
-You're leaving 90% of Claude Code's power on the table — and you don't know what you don't know.
-
----
-
-## How Claude How To Fixes This
-
-This isn't another feature reference. It's a **structured, visual, example-driven guide** that teaches you to use every Claude Code feature with real-world templates you can copy into your project today.
-
-| | Official Docs | This Guide |
-|--|---------------|------------|
-| **Format** | Reference documentation | Visual tutorials with Mermaid diagrams |
-| **Depth** | Feature descriptions | How it works under the hood |
-| **Examples** | Basic snippets | Production-ready templates you use immediately |
-| **Structure** | Feature-organized | Progressive learning path (beginner to advanced) |
-| **Onboarding** | Self-directed | Guided roadmap with time estimates |
-| **Self-Assessment** | None | Interactive quizzes to find your gaps and build a personalized path |
-
-### What you get:
-
-- **10 tutorial modules** covering every Claude Code feature — from slash commands to custom agent teams
-- **Copy-paste configs** — slash commands, CLAUDE.md templates, hook scripts, MCP configs, subagent definitions, and full plugin bundles
-- **Mermaid diagrams** showing how each feature works internally, so you understand *why*, not just *how*
-- **A guided learning path** that takes you from beginner to power user in 11-13 hours
-- **Built-in self-assessment** — run `/self-assessment` or `/lesson-quiz hooks` directly in Claude Code to identify gaps
-
-**[Start the Learning Path  ->](LEARNING-ROADMAP.md)**
+| | 원본 (영어) | 이 저장소의 한국어 가이드 |
+|---|---|---|
+| 대상 | Claude Code를 쓰는 모든 개발자 | **백엔드 취업을 준비하는 입문자** |
+| 구성 | 기능 설명 중심 레퍼런스 | **그림 → 실습 → 퀴즈 → 실무 활용** 중심 학습서 |
+| 예제 | 장마다 따로 노는 예제 | **하나의 Spring Boot 프로젝트**를 0장부터 끝까지 고쳐 나감 |
+| 결과물 | 설정 파일 | 설정 파일 + **포트폴리오 문서와 면접 답변** |
 
 ---
 
-## How It Works
+## 🎯 끝까지 하면 얻는 것
 
-### 1. Find your level
+- **실무 능력:** 처음 받은 Spring Boot 프로젝트를 Claude Code로 빠르게 파악하고, 버그 수정·테스트 작성·코드 리뷰를 맡기고 결과를 검토할 수 있어요.
+- **나만의 도구:** 반복하는 일을 슬래시 명령, 스킬, 훅, 리뷰 에이전트로 만들어 내 방식대로 쓸 수 있어요.
+- **협업 경험:** GitHub 이슈 → 브랜치 → PR → CI 흐름을 직접 해 봐요.
+- **포트폴리오:** 트러블슈팅 문서(N+1 개선 등), 테스트 코드, CI 설정, 졸업 프로젝트 저장소가 남아요.
+- **면접 준비:** 장마다 "면접에서 이렇게 말해 보세요"와 예상 꼬리 질문이 있어요.
 
-Take the [self-assessment quiz](LEARNING-ROADMAP.md#-find-your-level) or run `/self-assessment` in Claude Code. Get a personalized roadmap based on what you already know.
+### 이런 분께 맞아요
 
-### 2. Follow the guided path
-
-Work through 10 modules in order — each builds on the last. Copy templates directly into your project as you learn.
-
-### 3. Combine features into workflows
-
-The real power is in combining features. Learn to wire slash commands + memory + subagents + hooks into automated pipelines that handle code reviews, deployments, and documentation generation.
-
-### 4. Test your understanding
-
-Run `/lesson-quiz [topic]` after each module. The quiz pinpoints what you missed so you can fill gaps fast.
-
-**[Get Started in 15 Minutes](#get-started-in-15-minutes)**
+| ✅ 맞아요 | ❌ 다른 자료가 나아요 |
+|---|---|
+| Java·Spring을 공부 중인 백엔드 취업 준비생 | Java를 처음 배우는 분 (Java 기초부터 먼저) |
+| Claude Code를 처음 쓰거나 대화만 해 본 분 | Claude Code 고급 설정만 빠르게 찾는 분 → [영어 원본](README.en.md) |
+| 읽기보다 직접 해 보며 배우는 걸 좋아하는 분 | |
 
 ---
 
-## Trusted by Developers
+## 🚀 시작하기
 
-- **GitHub stars** from developers who use Claude Code daily
-- **Forks** from teams adapting this guide for their own workflows
-- **Actively maintained** — synced with every Claude Code release (latest: v2.1.302, October 2026)
-- **Community-driven** — contributions from developers who share their real-world configurations
+### 준비물
 
-[![Star History Chart](https://api.star-history.com/svg?repos=luongnv89/claude-howto&type=Date)](https://star-history.com/#luongnv89/claude-howto&Date)
+| 준비물 | 설명 |
+|---|---|
+| **Claude 유료 플랜** | Pro, Max 구독 또는 API 키. 무료 플랜으로는 Claude Code를 쓸 수 없어요 |
+| **Git** | Windows는 [Git for Windows](https://git-scm.com/downloads/win) 설치. 함께 설치되는 **Git Bash**로 실습해요 |
+| **JDK 21** | 실습 프로젝트 실행용 |
+| **에디터** | IntelliJ IDEA 또는 VS Code |
 
----
+### 3단계로 시작
 
-## Not Sure Where to Start?
-
-Take the self-assessment or pick your level:
-
-| Level | You can... | Start here | Time |
-|-------|-----------|------------|------|
-| **Beginner** | Start Claude Code and chat | [Slash Commands](01-slash-commands/) | ~2.5 hours |
-| **Intermediate** | Use CLAUDE.md and custom commands | [Skills](03-skills/) | ~3.5 hours |
-| **Advanced** | Configure MCP servers and hooks | [Advanced Features](09-advanced-features/) | ~5 hours |
-
-**Full learning path with all 10 modules:**
-
-| Order | Module | Level | Time |
-|-------|--------|-------|------|
-| 1 | [Slash Commands](01-slash-commands/) | Beginner | 30 min |
-| 2 | [Memory](02-memory/) | Beginner+ | 45 min |
-| 3 | [Checkpoints](08-checkpoints/) | Intermediate | 45 min |
-| 4 | [CLI Basics](10-cli/) | Beginner+ | 30 min |
-| 5 | [Skills](03-skills/) | Intermediate | 1 hour |
-| 6 | [Hooks](06-hooks/) | Intermediate | 1 hour |
-| 7 | [MCP](05-mcp/) | Intermediate+ | 1 hour |
-| 8 | [Subagents](04-subagents/) | Intermediate+ | 1.5 hours |
-| 9 | [Advanced Features](09-advanced-features/) | Advanced | 2-3 hours |
-| 10 | [Plugins](07-plugins/) | Advanced | 2 hours |
-
-**[Complete Learning Roadmap ->](LEARNING-ROADMAP.md)**
-
----
-
-## Get Started in 15 Minutes
-
-> **Installation note**: Starting in v2.1.113, Claude Code ships as a native per-platform binary (macOS/Linux/Windows). The recommended install is the native installer (`curl -fsSL https://claude.ai/install.sh | bash`); npm installation is deprecated in the official README; prefer the native installer, Homebrew (`brew install --cask claude-code`) or WinGet (`winget install Anthropic.ClaudeCode`). For reference, `npm install -g @anthropic-ai/claude-code` pulls the same native binary through a per-platform optional dependency at install time. As of v2.1.116, downloads come from `https://downloads.claude.ai/claude-code-releases` — corporate proxies must allowlist this host.
+**1. 이 저장소를 내려받아요.**
 
 ```bash
-# 1. Clone the guide
-git clone https://github.com/luongnv89/claude-howto.git
-cd claude-howto
-
-# 2. Copy your first slash command
-mkdir -p /path/to/your-project/.claude/commands
-cp 01-slash-commands/optimize.md /path/to/your-project/.claude/commands/
-
-# 3. Try it — in Claude Code, type:
-# /optimize
-
-# 4. Ready for more? Set up project memory:
-cp 02-memory/project-CLAUDE.md /path/to/your-project/CLAUDE.md
-
-# 5. Install a skill:
-cp -r 03-skills/code-review-specialist ~/.claude/skills/
+git clone https://github.com/Hanjise0ng/claude-howto.git ~/claude-howto
 ```
 
-Want the full setup? Here's the **1-hour essential setup**:
+**2. 학습 가이드 첫 화면을 열어요.**
 
-```bash
-# Slash commands (15 min)
-cp 01-slash-commands/*.md .claude/commands/
+[ko/README.md](ko/README.md)에서 **수준 확인 체크리스트**를 풀고 시작할 장을 정하세요. 처음이라면 무조건 0장부터예요.
 
-# Project memory (15 min)
-cp 02-memory/project-CLAUDE.md ./CLAUDE.md
+**3. [0장. 시작 전 준비](ko/00-getting-started/README.md)를 따라 해요.**
 
-# Install a skill (15 min)
-cp -r 03-skills/code-review-specialist ~/.claude/skills/
+Claude Code 설치, 실습 프로젝트 준비, 첫 대화까지 1시간이면 끝나요.
 
-# Weekend goal: add hooks, subagents, MCP, and plugins
-# Follow the learning path for guided setup
-```
-
-**[View the Full Installation Reference](#get-started-in-15-minutes)**
+> 💡 실습은 이 저장소 안이 아니라 **복사한 실습 프로젝트(`~/board-api`)** 에서 해요. 0장에서 방법을 안내해요.
 
 ---
 
-## What Can You Build With This?
+## 🧭 학습 순서
 
-| Use Case | Features You'll Combine |
-|----------|------------------------|
-| **Automated Code Review** | Slash Commands + Subagents + Memory + MCP |
-| **Team Onboarding** | Memory + Slash Commands + Plugins |
-| **CI/CD Automation** | CLI Reference + Hooks + Background Tasks |
-| **Documentation Generation** | Skills + Subagents + Plugins |
-| **Security Audits** | Subagents + Skills + Hooks (read-only mode) |
-| **DevOps Pipelines** | Plugins + MCP + Hooks + Background Tasks |
-| **Complex Refactoring** | Checkpoints + Planning Mode + Hooks |
+**폴더 번호(원문의 장 번호)대로가 아니라 아래 순서대로** 공부하세요. 앞 장에서 만든 결과물을 다음 장에서 이어서 써요.
+
+### 🟢 1단계: Claude와 안전하게 일하기 (약 5시간)
+
+| 순서 | 장 | 배우는 것 | 실습에서 하는 일 |
+|---|---|---|---|
+| 1 | [0장 시작 전 준비](ko/00-getting-started/README.md) | 설치, 첫 대화, 좋은 부탁 쓰는 법 | 처음 받은 프로젝트 구조 파악 |
+| 2 | [1장 슬래시 명령](ko/01-slash-commands/README.md) | `/` 명령, 나만의 명령 만들기 | 500 에러를 404로 고치기 |
+| 3 | [2장 메모리](ko/02-memory/README.md) | CLAUDE.md, 팀 규칙 저장 | 팀 규칙·실행 방법 적어 두기 |
+| 4 | [8장 체크포인트와 안전장치](ko/08-checkpoints/README.md) | 되돌리기, 계획 모드, 권한 모드 | 망치고 되돌리기, 계획부터 받기 |
+| 5 | [10장 CLI ① 기초](ko/10-cli/README.md#part-1-기초) | `claude -p`, 파이프 | 에러 로그 분석 |
+
+> 🎉 **1단계만 끝내도 실무에서 바로 쓸 수 있어요.**
+
+### 🔵 2단계: 반복 작업 자동화 (약 5시간)
+
+| 순서 | 장 | 배우는 것 | 실습에서 하는 일 |
+|---|---|---|---|
+| 6 | [3장 스킬](ko/03-skills/README.md) | 업무 매뉴얼 만들기 | 테스트 먼저 쓰고 버그 고치기(TDD) |
+| 7 | [6장 훅](ko/06-hooks/README.md) | "~할 때마다 자동으로" | 수정마다 자동 컴파일, 위험 명령 차단 |
+| 8 | [4장 서브에이전트](ko/04-subagents/README.md) | 일을 나눠 맡기기 | 보안 리뷰로 비밀번호 암호화 |
+| 9 | [5장 MCP](ko/05-mcp/README.md) | GitHub 등 외부 서비스 연결 | 이슈 → 브랜치 → PR |
+
+### 🔴 3단계: 실무 수준으로 (약 5시간 + 졸업 프로젝트)
+
+| 순서 | 장 | 배우는 것 | 실습에서 하는 일 |
+|---|---|---|---|
+| 10 | [9장 고급 기능](ko/09-advanced-features/README.md) | 계획 모드 심화, auto 모드 | N+1 문제 개선 |
+| 11 | [10장 CLI ② 심화](ko/10-cli/README.md#part-2-심화) | GitHub Actions | PR마다 테스트·리뷰 자동화 |
+| 12 | [7장 플러그인](ko/07-plugins/README.md) *(선택)* | 내 도구를 한 묶음으로 | 개발 도구 플러그인 배포 |
+| 🎓 | [졸업 프로젝트](ko/graduation/README.md) | 전부 활용 | 내 포트폴리오 프로젝트를 처음부터 |
+
+**왜 이 순서인가요?** 안전장치(8장)를 일찍 배워야 마음 놓고 실험할 수 있고, 준비물이 필요 없는 서브에이전트(4장)를 GitHub 인증이 필요한 MCP(5장)보다 먼저 해요. 자세한 이유는 [ko/README.md](ko/README.md#왜-이-순서인가요)에 있어요.
+
+### 📅 추천 일정 (하루 1~2시간)
+
+| 주차 | 범위 | 목표 |
+|---|---|---|
+| 1주차 | 1단계 (0 → 1 → 2 → 8 → 10장 ①) | Claude에게 안전하게 일 시키기 |
+| 2주차 | 2단계 (3 → 6 → 4 → 5장) | 반복 작업 자동화, 이슈·PR 흐름 |
+| 3주차 | 3단계 (9 → 10장 ② → 7장) | 성능 개선, CI 자동화 |
+| 4주차~ | 졸업 프로젝트 | 내 포트폴리오 완성 |
+
+하루에 한 장을 다 못 끝내도 괜찮아요. **"미션 하나 끝내고 커밋하기"** 를 하루 목표로 잡으세요.
 
 ---
 
-## FAQ
+## 📖 공부하는 방법
 
-**Is this free?**
-Yes. MIT licensed, free forever. Use it in personal projects, at work, in your team — no restrictions beyond including the license notice.
+### 모든 장은 같은 6단계로 되어 있어요
 
-**Is this maintained?**
-Actively. The guide is synced with every Claude Code release. Current version: v2.1.302 (October 2026), compatible with Claude Code 2.1+.
+| 단계 | 할 일 | 시간 | 이렇게 하세요 |
+|---|---|---|---|
+| 🖼️ **1. 그림 보기** | 개념 그림과 비유 | 5분 | "이 기능이 뭘 하는지" 한 문장으로 말할 수 있으면 충분 |
+| 📖 **2. 핵심 개념** | STEP 2의 표만 읽기 | 10분 | 외우지 말고 "이런 게 있구나" 정도로 |
+| 🛠️ **3. 실습 미션** | 🟢 기본 → 🔵 응용 → 🔴 도전 | 30~60분 | **가장 중요해요.** 반드시 직접 실행 |
+| ❓ **4. 퀴즈** | 장 안의 5문제 + `/ko-quiz` 8문제 | 10분 | 6점 이하면 틀린 부분의 미션을 다시 |
+| 🏢 **5. 현장 레시피** | 실무에서 쓰는 부탁 예시 | 5분 | 마음에 드는 건 내 스킬로 저장 |
+| 🎤 **6. 면접 한마디** | 배운 것을 내 경험으로 말하기 | 5분 | 내 말로 바꿔서 메모 |
 
-**How is this different from the official docs?**
-The official docs are a feature reference. This guide is a tutorial with diagrams, production-ready templates, and a progressive learning path. They complement each other — start here to learn, reference the docs when you need specifics.
+### 실습할 때 꼭 지킬 5가지
 
-**How long does it take to go through everything?**
-11-13 hours for the full path. But you'll get immediate value in 15 minutes — just copy a slash command template and try it.
+1. **Windows는 Git Bash로.** PowerShell은 `&&`, `curl`, `mkdir -p`가 다르게 동작해요.
+2. **Manual 모드(⏸)를 유지하기.** Claude가 무엇을 바꾸는지 하나하나 보는 것 자체가 공부예요.
+3. **Claude가 고친 코드는 `/diff`로 확인하기.** 이해가 안 되는 줄은 "이 줄 왜 이렇게 했어?"라고 물어보세요.
+4. **망쳐도 괜찮아요.** `Esc` 두 번으로 되돌리고, 그래도 안 되면 `git restore`로 돌아가요.
+5. **미션이 끝날 때마다 `git commit`.** 커밋 기록이 곧 학습 기록이고 포트폴리오예요.
 
-**Can I use this with Claude Sonnet / Haiku / Opus?**
-Yes. All templates work with Claude Fable 5.1, Claude Fable 5, Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, Claude Sonnet 5, Claude Sonnet 4.6, Claude Opus 4.8, Claude Haiku 5.5, and Claude Haiku 4.5.
+### 막혔을 때
 
-**Can I contribute?**
-Absolutely. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. We welcome new examples, bug fixes, documentation improvements, and community templates.
+```text
+1. 미션 아래 "🔍 힌트" 열어 보기
+2. Claude에게 에러 메시지째 물어보기 ("이 에러를 신입 눈높이로 설명해 줘")
+3. 모르는 단어는 용어집(ko/glossary.md)에서 찾기
+4. 그래도 안 되면 참고 풀이(ko/practice/solutions.md) 보기. 단, 미션을 해 본 뒤에만
+```
 
-**Can I read this offline?**
-Yes. Run `uv run scripts/build_epub.py` to generate an EPUB ebook with all content and rendered diagrams.
+### 이해했는지 판단하는 기준
+
+| 상태 | 판단 |
+|---|---|
+| 문서를 읽고 고개를 끄덕였다 | ❌ 아직 아니에요 |
+| 미션을 그대로 따라 해서 성공했다 | 🔺 절반 |
+| 🔴 도전 미션처럼 **다른 상황에 응용**하고, **왜 그렇게 하는지 설명**할 수 있다 | ✅ 이해했어요 |
+
+> 🎯 **가장 중요한 원칙:** Claude가 만든 코드를 **내 말로 설명할 수 없으면, 그 코드는 아직 내 것이 아니에요.** 설명이 막히는 곳이 바로 다음 공부 주제예요.
 
 ---
 
-## Start Mastering Claude Code Today
+## 🧪 실습 프로젝트: board-api
 
-You already have Claude Code installed. The only thing between you and 10x productivity is knowing how to use it. This guide gives you the structured path, the visual explanations, and the copy-paste templates to get there.
+![board-api 구조](ko/images/00-board-api-layers.svg)
 
-MIT licensed. Free forever. Clone it, fork it, make it yours.
+회원, 게시글, 댓글 기능이 있는 **Spring Boot 4 + JPA + H2** 게시판 API예요. 신입이 처음 받는 코드처럼 **고쳐야 할 문제 5개가 일부러 숨어 있어요.**
 
-**[Start the Learning Path ->](LEARNING-ROADMAP.md)** | **[Browse the Feature Catalog](CATALOG.md)** | **[Get Started in 15 Minutes](#get-started-in-15-minutes)**
+| # | 숨은 문제 (힌트) | 고치는 장 |
+|---|---|---|
+| 1 | 없는 게시글을 조회하면 이상한 에러가 나요 | 1장 |
+| 2 | 테스트 코드가 사실상 없어요 | 3장 |
+| 3 | 제목이 빈 게시글도 저장돼요 | 3장 |
+| 4 | 회원 정보를 저장하는 방식이 위험해요 | 4장 |
+| 5 | 목록을 한 번 조회하는데 SQL이 너무 많이 실행돼요 | 9장 |
+
+👉 [실습 프로젝트 안내](ko/practice/board-api/README.md) · [참고 풀이](ko/practice/solutions.md) (미션을 해 본 뒤에 보세요)
 
 ---
 
-<details>
-<summary>Quick Navigation — All Features</summary>
+## ❓ 퀴즈로 실력 확인하기
 
-| Feature | Description | Folder |
-|---------|-------------|--------|
-| **Feature Catalog** | Complete reference with installation commands | [CATALOG.md](CATALOG.md) |
-| **Slash Commands** | User-invoked shortcuts | [01-slash-commands/](01-slash-commands/) |
-| **Memory** | Persistent context | [02-memory/](02-memory/) |
-| **Skills** | Reusable capabilities | [03-skills/](03-skills/) |
-| **Subagents** | Specialized AI assistants | [04-subagents/](04-subagents/) |
-| **MCP Protocol** | External tool access | [05-mcp/](05-mcp/) |
-| **Hooks** | Event-driven automation | [06-hooks/](06-hooks/) |
-| **Plugins** | Bundled features | [07-plugins/](07-plugins/) |
-| **Checkpoints** | Session snapshots & rewind | [08-checkpoints/](08-checkpoints/) |
-| **Advanced Features** | Planning, thinking, background tasks | [09-advanced-features/](09-advanced-features/) |
-| **CLI Reference** | Commands, flags, and options | [10-cli/](10-cli/) |
-| **Blog Posts** | Real-world usage examples | [Blog Posts](https://medium.com/@luongnv89) |
+이 저장소 폴더에서 `claude`를 켜고 입력하세요.
+
+| 명령 | 하는 일 |
+|---|---|
+| `/ko-quiz 1` | 한국어 가이드 1장 퀴즈 8문제를 내고 채점, 복습할 곳을 알려 줘요. 장 번호는 `0`~`9`, `10-1`, `10-2` |
+| `/self-assessment` | 원본의 전체 실력 진단 (영어) |
+| `/lesson-quiz hooks` | 원본 모듈별 퀴즈 (영어) |
+
+---
+
+## 📁 저장소 구조
+
+```text
+claude-howto/
+├── README.md                 ← 지금 보는 문서 (한국어)
+├── README.en.md              ← 원본 영어 소개
+├── ko/                       ← ⭐ 한국어 학습 가이드
+│   ├── README.md             ← 학습 가이드 시작 화면
+│   ├── glossary.md           ← 용어집
+│   ├── 00-getting-started/   ← 0장
+│   ├── 01-slash-commands/ … 10-cli/   ← 각 장 + 복사용 템플릿
+│   ├── graduation/           ← 졸업 프로젝트
+│   ├── practice/             ← 실습 프로젝트 board-api, 참고 풀이
+│   └── images/               ← 개념 그림
+├── 01-slash-commands/ … 10-cli/   ← 원본 영어 모듈 (심화 레퍼런스)
+├── .claude/skills/           ← 퀴즈 스킬 (ko-quiz, lesson-quiz, self-assessment)
+└── ja/ vi/ zh/ uk/           ← 다른 언어 번역
+```
+
+### 영어 원본은 언제 보나요?
+
+한국어 가이드는 입문자에게 필요한 것만 골라 쉽게 다시 썼어요. 각 장 끝의 **"📚 더 알아보기"** 에 원본 영어 모듈 링크가 있어요. 이럴 때 원본을 보세요.
+
+- 모든 옵션과 설정 키를 찾아볼 때 (예: 훅 이벤트 30개 전체)
+- 버전별 변경 사항을 확인할 때
+- 기업용·관리자 설정이 필요할 때
+
+영어가 부담되면 Claude에게 "이 문서의 ○○ 부분을 한국어로 요약해 줘"라고 부탁하세요.
+
+---
+
+## ❔ 자주 묻는 질문
+
+<details>
+<summary><b>코딩을 거의 몰라도 할 수 있나요?</b></summary>
+
+Java 문법과 Spring의 기본 개념(Controller, Service, Repository)을 들어 본 정도면 충분해요. 실습 프로젝트 코드는 0장에서 Claude와 함께 하나씩 읽어 가요. Java를 처음 배우는 단계라면 Java 기초를 먼저 공부하는 게 좋아요.
 
 </details>
 
 <details>
-<summary>Feature Comparison</summary>
+<summary><b>무료로 할 수 있나요?</b></summary>
 
-| Feature | Invocation | Persistence | Best For |
-|---------|-----------|------------|----------|
-| **Slash Commands** | Manual (`/cmd`) | Session only | Quick shortcuts |
-| **Memory** | Auto-loaded | Cross-session | Long-term learning |
-| **Skills** | Auto-invoked | Filesystem | Automated workflows |
-| **Subagents** | Auto-delegated | Isolated context | Task distribution |
-| **MCP Protocol** | Auto-queried | Real-time | Live data access |
-| **Hooks** | Event-triggered | Configured | Automation & validation |
-| **Plugins** | One command | All features | Complete solutions |
-| **Checkpoints** | Manual/Auto | Session-based | Safe experimentation |
-| **Planning Mode** | Manual/Auto | Plan phase | Complex implementations |
-| **Background Tasks** | Manual | Task duration | Long-running operations |
-| **CLI Reference** | Terminal commands | Session/Script | Automation & scripting |
+Claude Code는 Pro, Max 같은 **유료 구독** 또는 API 키가 필요해요. 10장 ②의 CI 자동 리뷰 미션은 API 키가 따로 필요하고 쓰는 만큼 요금이 나가요(선택 미션이에요).
 
 </details>
 
 <details>
-<summary>Installation Quick Reference</summary>
+<summary><b>Mac에서도 되나요?</b></summary>
 
-```bash
-# Slash Commands
-cp 01-slash-commands/*.md .claude/commands/
-
-# Memory
-cp 02-memory/project-CLAUDE.md ./CLAUDE.md
-
-# Skills
-cp -r 03-skills/code-review-specialist ~/.claude/skills/
-
-# Subagents
-cp 04-subagents/*.md .claude/agents/
-
-# MCP
-claude mcp add --transport http github https://api.githubcopilot.com/mcp/ --header "Authorization: Bearer YOUR_GITHUB_PAT"
-
-# Hooks
-mkdir -p ~/.claude/hooks
-cp 06-hooks/*.sh ~/.claude/hooks/
-chmod +x ~/.claude/hooks/*.sh
-
-# Plugins (load a local plugin from the repo root)
-claude --plugin-dir ./07-plugins/pr-review
-
-# Checkpoints (auto-enabled, configure in settings)
-# See 08-checkpoints/README.md
-
-# Advanced Features (configure in settings)
-# See 09-advanced-features/config-examples.json
-
-# CLI Reference (no installation needed)
-# See 10-cli/README.md for usage examples
-```
+네. 모든 명령이 bash 기준이라 Mac 터미널에서 그대로 따라 하면 돼요. Windows만 Git Bash를 쓰면 돼요.
 
 </details>
 
 <details>
-<summary>01. Slash Commands</summary>
+<summary><b>AI에게 맡기면 실력이 안 늘지 않나요?</b></summary>
 
-**Location**: [01-slash-commands/](01-slash-commands/)
-
-**What**: User-invoked shortcuts stored as Markdown files
-
-**Examples**:
-- `optimize.md` - Code optimization analysis
-- `pr.md` - Pull request preparation
-- `generate-api-docs.md` - API documentation generator
-
-**Installation**:
-```bash
-cp 01-slash-commands/*.md /path/to/project/.claude/commands/
-```
-
-**Usage**:
-```
-/optimize
-/pr
-/generate-api-docs
-```
-
-**Learn More**: [Discovering Claude Code Slash Commands](https://medium.com/@luongnv89/discovering-claude-code-slash-commands-cdc17f0dfb29)
+그래서 모든 미션에 "내 말로 설명하기"와 "면접 한마디"가 있어요. 이 가이드의 목표는 AI가 대신 코딩하게 하는 게 아니라, **AI 결과를 검증하고 설명할 수 있는 개발자**가 되는 거예요. 테스트 먼저 쓰기(3장), 변경 검토(8장), 리뷰(4장)도 그래서 들어 있어요.
 
 </details>
 
 <details>
-<summary>02. Memory</summary>
+<summary><b>시간이 얼마나 걸리나요?</b></summary>
 
-**Location**: [02-memory/](02-memory/)
-
-**What**: Persistent context across sessions
-
-**Examples**:
-- `project-CLAUDE.md` - Team-wide project standards
-- `directory-api-CLAUDE.md` - Directory-specific rules
-- `personal-CLAUDE.md` - Personal preferences
-
-**Installation**:
-```bash
-# Project memory
-cp 02-memory/project-CLAUDE.md /path/to/project/CLAUDE.md
-
-# Directory memory
-cp 02-memory/directory-api-CLAUDE.md /path/to/project/src/api/CLAUDE.md
-
-# Personal memory
-cp 02-memory/personal-CLAUDE.md ~/.claude/CLAUDE.md
-```
-
-**Usage**: Automatically loaded by Claude
-
-</details>
-
-<details>
-<summary>03. Skills</summary>
-
-**Location**: [03-skills/](03-skills/)
-
-**What**: Reusable, auto-invoked capabilities with instructions and scripts
-
-**Examples**:
-- `code-review-specialist/` - Comprehensive code review with scripts
-- `brand-voice/` - Brand voice consistency checker
-- `doc-generator/` - API documentation generator
-
-**Installation**:
-```bash
-# Personal skills
-cp -r 03-skills/code-review-specialist ~/.claude/skills/
-
-# Project skills
-cp -r 03-skills/code-review-specialist /path/to/project/.claude/skills/
-```
-
-**Usage**: Automatically invoked when relevant
-
-</details>
-
-<details>
-<summary>04. Subagents</summary>
-
-**Location**: [04-subagents/](04-subagents/)
-
-**What**: Specialized AI assistants with isolated contexts and custom prompts
-
-**Examples**:
-- `code-reviewer.md` - Comprehensive code quality analysis
-- `test-engineer.md` - Test strategy and coverage
-- `documentation-writer.md` - Technical documentation
-- `secure-reviewer.md` - Security-focused review (read-only)
-- `implementation-agent.md` - Full feature implementation
-
-**Installation**:
-```bash
-cp 04-subagents/*.md /path/to/project/.claude/agents/
-```
-
-**Usage**: Automatically delegated by main agent
-
-</details>
-
-<details>
-<summary>05. MCP Protocol</summary>
-
-**Location**: [05-mcp/](05-mcp/)
-
-**What**: Model Context Protocol for accessing external tools and APIs
-
-**Examples**:
-- `github-mcp.json` - GitHub integration
-- `database-mcp.json` - Database queries
-- `filesystem-mcp.json` - File operations
-- `multi-mcp.json` - Multiple MCP servers
-
-**Installation**:
-```bash
-# Set environment variables
-export DATABASE_URL="postgresql://..."
-
-# Add MCP server via CLI
-claude mcp add --transport http github https://api.githubcopilot.com/mcp/ --header "Authorization: Bearer YOUR_GITHUB_PAT"
-
-# Or add to project .mcp.json manually (see 05-mcp/ for examples)
-```
-
-**Usage**: MCP tools are automatically available to Claude once configured
-
-</details>
-
-<details>
-<summary>06. Hooks</summary>
-
-**Location**: [06-hooks/](06-hooks/)
-
-**What**: Event-driven shell commands that execute automatically in response to Claude Code events
-
-**Examples**:
-- `format-code.sh` - Auto-format code after writing
-- `pre-commit.sh` - Run tests before commits
-- `security-scan.sh` - Scan for security issues
-- `log-bash.sh` - Log all bash commands
-- `validate-prompt.sh` - Validate user prompts
-- `notify-team.sh` - Send notifications on events
-
-**Installation**:
-```bash
-mkdir -p ~/.claude/hooks
-cp 06-hooks/*.sh ~/.claude/hooks/
-chmod +x ~/.claude/hooks/*.sh
-```
-
-Configure hooks in `~/.claude/settings.json`:
-```json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write",
-        "hooks": [
-          { "type": "command", "command": "~/.claude/hooks/format-code.sh" },
-          { "type": "command", "command": "~/.claude/hooks/security-scan.sh" }
-        ]
-      }
-    ]
-  }
-}
-```
-
-**Usage**: Hooks execute automatically on events
-
-**Hook Types** (5): `command`, `http`, `prompt`, `mcp_tool`, `agent` — how a hook runs.
-
-**Hook Events** (33, in 4 categories) — when it runs:
-- **Tool Hooks**: `PreToolUse`, `PostToolUse`, `PostToolUseFailure`, `PostToolBatch`, `PermissionRequest`, `PermissionDenied`
-- **Session Hooks**: `SessionStart`, `Setup`, `SessionEnd`, `Stop`, `StopFailure`, `SubagentStart`, `SubagentStop`
-- **Task Hooks**: `UserPromptSubmit`, `UserPromptExpansion`, `MessageDisplay`, `TaskCompleted`, `TaskCreated`, `TeammateIdle` — `TaskCompleted` and `TaskCreated` only fire when the todo tools are enabled, which is available by default only on Claude 3.x models, Opus 4 through 4.7, Sonnet 4 through 4.6, and Haiku 4.5 (`CLAUDE_CODE_ENABLE_TODO_TOOLS=1` restores them)
-- **Lifecycle Hooks**: `ConfigChange`, `CwdChanged`, `DirectoryAdded`, `FileChanged`, `PreCompact`, `PostCompact`, `PreModelSwitch`, `PostModelSwitch`, `WorktreeCreate`, `WorktreeRemove`, `Notification`, `InstructionsLoaded`, `Elicitation`, `ElicitationResult`
-
-</details>
-
-<details>
-<summary>07. Plugins</summary>
-
-**Location**: [07-plugins/](07-plugins/)
-
-**What**: Bundled collections of commands, agents, MCP, and hooks
-
-**Examples**:
-- `pr-review/` - Complete PR review workflow
-- `devops-automation/` - Deployment and monitoring
-- `documentation/` - Documentation generation
-
-**Installation**:
-```bash
-# From the repo root (this repo ships no marketplace, so /plugin install does not apply)
-claude --plugin-dir ./07-plugins/pr-review
-claude --plugin-dir ./07-plugins/devops-automation
-claude --plugin-dir ./07-plugins/documentation
-```
-
-**Usage**: Use bundled slash commands and features
-
-</details>
-
-<details>
-<summary>08. Checkpoints and Rewind</summary>
-
-**Location**: [08-checkpoints/](08-checkpoints/)
-
-**What**: Save conversation state and rewind to previous points to explore different approaches
-
-**Key Concepts**:
-- **Checkpoint**: Snapshot of conversation state
-- **Rewind**: Return to previous checkpoint
-- **Branch Point**: Explore multiple approaches from same checkpoint
-
-**Usage**:
-```
-# Checkpoints are created automatically with every user prompt
-# To rewind, press Esc twice or use:
-/rewind
-
-# Then choose from six options:
-# 1. Restore code and conversation
-# 2. Restore conversation
-# 3. Restore code
-# 4. Summarize from here
-# 5. Summarize up to here
-# 6. Never mind
-```
-
-**Use Cases**:
-- Try different implementation approaches
-- Recover from mistakes
-- Safe experimentation
-- Compare alternative solutions
-- A/B testing different designs
-
-</details>
-
-<details>
-<summary>09. Advanced Features</summary>
-
-**Location**: [09-advanced-features/](09-advanced-features/)
-
-**What**: Advanced capabilities for complex workflows and automation
-
-**Includes**:
-- **Planning Mode** — Create detailed implementation plans before coding
-- **Extended Thinking** — Deep reasoning for complex problems (toggle with `Alt+T` / `Option+T`)
-- **Background Tasks** — Run long operations without blocking
-- **Permission Modes** — `manual` (config value `default`), `acceptEdits`, `plan`, `auto`, `dontAsk`, `bypassPermissions`
-- **Headless Mode** — Run Claude Code in CI/CD: `claude -p "Run tests and generate report"`
-- **Session Management** — `/resume`, `/rename`, `/fork`, `/branch`, `claude -c`, `claude -r`
-- **Configuration** — Customize behavior in `~/.claude/settings.json`
-
-See [config-examples.json](09-advanced-features/config-examples.json) for complete configurations.
-
-</details>
-
-<details>
-<summary>10. CLI Reference</summary>
-
-**Location**: [10-cli/](10-cli/)
-
-**What**: Complete command-line interface reference for Claude Code
-
-**Quick Examples**:
-```bash
-# Interactive mode
-claude "explain this project"
-
-# Print mode (non-interactive)
-claude -p "review this code"
-
-# Process file content
-cat error.log | claude -p "explain this error"
-
-# JSON output for scripts
-claude -p --output-format json "list functions"
-
-# Resume session
-claude -r "feature-auth" "continue implementation"
-```
-
-**Use Cases**: CI/CD pipeline integration, script automation, batch processing, multi-session workflows, custom agent configurations
-
-</details>
-
-<details>
-<summary>Example Workflows</summary>
-
-### Complete Code Review Workflow
-
-```markdown
-# Uses: Slash Commands + Subagents + Memory + MCP
-
-User: /review-pr
-
-Claude:
-1. Loads project memory (coding standards)
-2. Fetches PR via GitHub MCP
-3. Delegates to code-reviewer subagent
-4. Delegates to test-engineer subagent
-5. Synthesizes findings
-6. Provides comprehensive review
-```
-
-### Automated Documentation
-
-```markdown
-# Uses: Skills + Subagents + Memory
-
-User: "Generate API documentation for the auth module"
-
-Claude:
-1. Loads project memory (doc standards)
-2. Detects doc generation request
-3. Auto-invokes doc-generator skill
-4. Delegates to api-documenter subagent
-5. Creates comprehensive docs with examples
-```
-
-### DevOps Deployment
-
-```markdown
-# Uses: Plugins + MCP + Hooks
-
-User: /deploy production
-
-Claude:
-1. Runs pre-deploy hook (validates environment)
-2. Delegates to deployment-specialist subagent
-3. Executes deployment via Kubernetes MCP
-4. Monitors progress
-5. Runs post-deploy hook (health checks)
-6. Reports status
-```
-
-</details>
-
-<details>
-<summary>Directory Structure</summary>
-
-```
-├── 01-slash-commands/
-│   ├── optimize.md
-│   ├── pr.md
-│   ├── generate-api-docs.md
-│   └── README.md
-├── 02-memory/
-│   ├── project-CLAUDE.md
-│   ├── directory-api-CLAUDE.md
-│   ├── personal-CLAUDE.md
-│   └── README.md
-├── 03-skills/
-│   ├── code-review-specialist/
-│   │   ├── SKILL.md
-│   │   ├── scripts/
-│   │   └── templates/
-│   ├── brand-voice/
-│   │   ├── SKILL.md
-│   │   └── templates/
-│   ├── doc-generator/
-│   │   ├── SKILL.md
-│   │   └── generate-docs.py
-│   └── README.md
-├── 04-subagents/
-│   ├── code-reviewer.md
-│   ├── test-engineer.md
-│   ├── documentation-writer.md
-│   ├── secure-reviewer.md
-│   ├── implementation-agent.md
-│   └── README.md
-├── 05-mcp/
-│   ├── github-mcp.json
-│   ├── database-mcp.json
-│   ├── filesystem-mcp.json
-│   ├── multi-mcp.json
-│   └── README.md
-├── 06-hooks/
-│   ├── format-code.sh
-│   ├── pre-commit.sh
-│   ├── security-scan.sh
-│   ├── log-bash.sh
-│   ├── validate-prompt.sh
-│   ├── notify-team.sh
-│   └── README.md
-├── 07-plugins/
-│   ├── pr-review/
-│   ├── devops-automation/
-│   ├── documentation/
-│   └── README.md
-├── 08-checkpoints/
-│   ├── checkpoint-examples.md
-│   └── README.md
-├── 09-advanced-features/
-│   ├── config-examples.json
-│   ├── planning-mode-examples.md
-│   └── README.md
-├── 10-cli/
-│   └── README.md
-└── README.md (this file)
-```
-
-</details>
-
-<details>
-<summary>Best Practices</summary>
-
-### Do's
-- Start simple with slash commands
-- Add features incrementally
-- Use memory for team standards
-- Test configurations locally first
-- Document custom implementations
-- Version control project configurations
-- Share plugins with team
-
-### Don'ts
-- Don't create redundant features
-- Don't hardcode credentials
-- Don't skip documentation
-- Don't over-complicate simple tasks
-- Don't ignore security best practices
-- Don't commit sensitive data
-
-</details>
-
-<details>
-<summary>Troubleshooting</summary>
-
-### Feature Not Loading
-1. Check file location and naming
-2. Verify YAML frontmatter syntax
-3. Check file permissions
-4. Review Claude Code version compatibility
-
-### MCP Connection Failed
-1. Verify environment variables
-2. Check MCP server installation
-3. Test credentials
-4. Review network connectivity
-
-### Subagent Not Delegating
-1. Check tool permissions
-2. Verify agent description clarity
-3. Review task complexity
-4. Test agent independently
-
-</details>
-
-<details>
-<summary>Testing</summary>
-
-This project includes comprehensive automated testing:
-
-- **Unit Tests**: Python tests using pytest (Python 3.10, 3.11, 3.12)
-- **Code Quality**: Linting and formatting with Ruff
-- **Security**: Vulnerability scanning with Bandit
-- **Type Checking**: Static type analysis with mypy
-- **Build Verification**: EPUB generation testing
-- **Coverage Tracking**: Codecov integration
-
-```bash
-# Install development dependencies
-uv pip install -r scripts/requirements-dev.txt
-
-# Run all unit tests
-pytest scripts/tests/ -v
-
-# Run tests with coverage report
-pytest scripts/tests/ -v --cov=scripts --cov-report=html
-
-# Run code quality checks
-ruff check scripts/
-ruff format --check scripts/
-
-# Run security scan
-bandit -c scripts/pyproject.toml -r scripts/ --exclude scripts/tests/
-
-# Run type checking
-mypy scripts/ --ignore-missing-imports
-```
-
-Tests run automatically on every push to `main`/`develop` and every PR to `main`. See [TESTING.md](.github/TESTING.md) for detailed information.
-
-</details>
-
-<details>
-<summary>EPUB Generation</summary>
-
-Want to read this guide offline? Generate an EPUB ebook:
-
-```bash
-uv run scripts/build_epub.py
-```
-
-This creates `claude-howto-guide.epub` with all content, including rendered Mermaid diagrams.
-
-See [scripts/README.md](scripts/README.md) for more options.
-
-</details>
-
-<details>
-<summary>Contributing</summary>
-
-Found an issue or want to contribute an example? We'd love your help!
-
-**Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:**
-- Types of contributions (examples, docs, features, bugs, feedback)
-- How to set up your development environment
-- Directory structure and how to add content
-- Writing guidelines and best practices
-- Commit and PR process
-
-**Our Community Standards:**
-- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - How we treat each other
-- [SECURITY.md](SECURITY.md) - Security policy and vulnerability reporting
-
-### Reporting Security Issues
-
-If you discover a security vulnerability, please report it responsibly:
-
-1. **Use GitHub Private Vulnerability Reporting**: https://github.com/luongnv89/claude-howto/security/advisories
-2. **Or read** [.github/SECURITY_REPORTING.md](.github/SECURITY_REPORTING.md) for detailed instructions
-3. **Do NOT** open a public issue for security vulnerabilities
-
-Quick start:
-1. Fork and clone the repository
-2. Create a descriptive branch (`add/feature-name`, `fix/bug`, `docs/improvement`)
-3. Make your changes following the guidelines
-4. Submit a pull request with a clear description
-
-**Need help?** Open an issue or discussion, and we'll guide you through the process.
-
-</details>
-
-<details>
-<summary>Additional Resources</summary>
-
-- [Claude Code Documentation](https://code.claude.com/docs/en/overview)
-- [MCP Protocol Specification](https://modelcontextprotocol.io)
-- [Skills Repository](https://github.com/luongnv89/skills) - Collection of ready-to-use skills
-- [Anthropic Cookbook](https://github.com/anthropics/anthropic-cookbook)
-- [Boris Cherny's Claude Code Workflow](https://x.com/bcherny/status/2007179832300581177) - The creator of Claude Code shares his systematized workflow: parallel agents, shared CLAUDE.md, Plan mode, slash commands, subagents, and verification hooks for autonomous long-running sessions.
+하루 1~2시간이면 1단계 1주, 2단계 1주, 3단계 1주, 졸업 프로젝트 1~2주 정도예요. 1단계만 끝내도 실무에서 바로 쓸 수 있어요.
 
 </details>
 
 ---
 
-## Contributing
+## 🔄 원본 업데이트 받기
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on how to get started.
+이 저장소는 원본을 `upstream`으로 연결해 두었어요. 원본에 새 내용이 생기면 이렇게 받아와요.
+
+```bash
+git fetch upstream
+git merge upstream/main
+```
+
+원본이 영어 `README.md`를 바꾸면 이 한국어 README와 충돌할 수 있어요. 그때는 한국어 README는 그대로 두고, 원본의 새 내용은 `README.en.md`에 옮겨 주세요.
 
 ---
 
-## License
+## 📜 출처와 라이선스
 
-MIT License - see [LICENSE](LICENSE). Free to use, modify, and distribute. The only requirement is including the license notice.
-
----
-
-**Last Updated**: October 18, 2026
-**Claude Code Version**: 2.1.302
-**Sources**:
-- https://code.claude.com/docs/en/tools-reference#task-tool-availability
-- https://code.claude.com/docs/en/hooks
-- https://code.claude.com/docs/en/overview
-- https://code.claude.com/docs/en/changelog
-- https://code.claude.com/docs/en/permission-modes
-- https://platform.claude.com/docs/en/about-claude/models/overview
-- https://github.com/anthropics/claude-code/releases
-- https://github.com/anthropics/claude-code/releases/tag/v2.1.154
-- https://code.claude.com/docs/en/model-config
-- https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md
-- https://github.com/anthropics/claude-code/releases/tag/v2.1.296
-- https://code.claude.com/docs/en/setup
-- https://code.claude.com/docs/en/mcp
-- https://code.claude.com/docs/en/plugins/install
-- https://code.claude.com/docs/en/checkpointing
-- https://github.com/anthropics/claude-code
-- https://code.claude.com/docs/en/changelog#2-1-302
-**Compatible Models**: Claude Fable 5.1, Claude Fable 5, Claude Opus 5, Claude Sonnet 5, Claude Sonnet 4.6, Claude Opus 4.8, Claude Haiku 4.5
+- 원본: [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto) by Luong NGUYEN, [MIT License](LICENSE)
+- 한국어 학습 가이드(`ko/`)는 원본 v2.1.302를 바탕으로 작성했어요.
+- 이 저장소도 MIT License를 따라요. 자유롭게 쓰고, 고치고, 나눠도 되며 라이선스 고지만 포함하면 돼요.
+- 공식 문서: [Claude Code Docs](https://code.claude.com/docs/en/overview)
