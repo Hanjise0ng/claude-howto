@@ -49,6 +49,7 @@ yarn-error.log*
 .claude/skills/*
 !.claude/skills/self-assessment/
 !.claude/skills/lesson-quiz/
+!.claude/skills/ko-quiz/
 blog-posts/
 
 # Local progress tracker — HTML ships in repo, but exported JSON data files stay local

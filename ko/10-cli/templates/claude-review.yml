@@ -1,0 +1,43 @@
+# PR이 올라오면 Claude가 변경 사항을 리뷰하고 PR에 댓글로 남긴다.
+# 복사 위치: .github/workflows/claude-review.yml
+# 준비: 저장소 Settings → Secrets and variables → Actions 에 ANTHROPIC_API_KEY 등록
+name: Claude Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Review the diff
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          git diff origin/${{ github.base_ref }}...HEAD -- '*.java' '*.gradle' '*.yml' \
+            | claude -p --max-turns 1 \
+              "당신은 Spring Boot 백엔드 코드 리뷰어입니다. 아래 diff를 한국어로 리뷰하세요.
+              1) 버그 가능성 2) 보안 문제 3) JPA/트랜잭션 문제 4) 테스트 누락 순서로,
+              문제가 있는 것만 '파일:줄 - 문제 - 제안' 형식으로 적고, 없으면 '특이 사항 없음'이라고 쓰세요." \
+            > review.md
+
+      - name: Comment on the PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr comment ${{ github.event.pull_request.number }} --body-file review.md

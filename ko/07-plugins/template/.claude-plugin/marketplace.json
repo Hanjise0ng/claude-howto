@@ -1,0 +1,14 @@
+{
+  "name": "my-dev-tools",
+  "owner": {
+    "name": "내 이름"
+  },
+  "plugins": [
+    {
+      "name": "spring-dev-kit",
+      "source": "./",
+      "description": "Spring Boot 백엔드 개발용 스킬, 리뷰 에이전트, 안전 훅 모음",
+      "version": "0.1.0"
+    }
+  ]
+}
